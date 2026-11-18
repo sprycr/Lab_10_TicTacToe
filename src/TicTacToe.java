@@ -44,6 +44,7 @@ public class TicTacToe {
               done = true;
             }
           } else if (isTie()) {// if it is a tie
+            System.out.println("It's a tie!");
             if (SafeInput.getYNConfirm(in, "Play again?")) {
               done = false;
               display();
