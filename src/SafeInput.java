@@ -140,7 +140,7 @@ public class SafeInput {
     boolean valid = false;
     // replay logic
     do { // loop until valid input received
-      System.out.print(prompt);
+      System.out.print(prompt + " [Y/n]");
       if (pipe.hasNextLine()) {
         String input = pipe.nextLine();
 
