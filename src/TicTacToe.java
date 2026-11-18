@@ -35,19 +35,19 @@ public class TicTacToe {
         moveCounter += 1;
         if (moveCounter >= 5) {// if a win is possible
           if (isWin(playerMark)) {// if it is a win
+            display();
             System.out.println("Player " + playerMark + " wins!");
             if (SafeInput.getYNConfirm(in, "Play again?")) {
               done = false;
-              display();
               reset();
             } else {
               done = true;
             }
           } else if (isTie()) {// if it is a tie
+            display();
             System.out.println("It's a tie!");
             if (SafeInput.getYNConfirm(in, "Play again?")) {
               done = false;
-              display();
               reset();
             } else {
               done = true;
