@@ -24,6 +24,7 @@ public class TicTacToe {
     clearBoard();
     boolean done = false;
     do {// while players want to keep playing
+      System.out.println(playerMark + "'s turn.");
       System.out.println("Here is the board:");
       display();
       System.out.println("Please enter the row and column for your " + playerMark + ".");
@@ -37,6 +38,7 @@ public class TicTacToe {
             System.out.println("Player " + playerMark + " wins!");
             if (SafeInput.getYNConfirm(in, "Play again?")) {
               done = false;
+              display();
               reset();
             } else {
               done = true;
@@ -44,6 +46,7 @@ public class TicTacToe {
           } else if (isTie()) {// if it is a tie
             if (SafeInput.getYNConfirm(in, "Play again?")) {
               done = false;
+              display();
               reset();
             } else {
               done = true;
@@ -72,17 +75,17 @@ public class TicTacToe {
   }
 
   private static void invertBoard() {
-    for (int i = 0; i < rows; i++) {
-      for (int j = 0; j < cols; j++) {
-        if (!board[i][j].equals(" ")) {
-          if (board[i][j].equals("X")) {
-            board[i][j] = "O";
-          } else if (board[i][j].equals("O")) {
-            board[i][j] = "X";
-          }
-        }
-      }
-    }
+//    for (int i = 0; i < rows; i++) {
+//      for (int j = 0; j < cols; j++) {
+//        if (!board[i][j].equals(" ")) {
+//          if (board[i][j].equals("X")) {
+//            board[i][j] = "O";
+//          } else if (board[i][j].equals("O")) {
+//            board[i][j] = "X";
+//          }
+//        }
+//      }
+//    }
     if (playerMark.equals("X")) {
       playerMark = "O";
     } else {
@@ -93,7 +96,7 @@ public class TicTacToe {
   private static void display() {
     System.out.println("  | 1 | 2 | 3 |");
     for (int i = 0; i < rows; i++) {
-      System.out.printf("%d | %-1s | %-1s | %-1s |", i + 1, board[i][0], board[i][1], board[i][2]);
+      System.out.printf("%d | %-1s | %-1s | %-1s |\n", i + 1, board[i][0], board[i][1], board[i][2]);
     }
   }
 
@@ -113,8 +116,8 @@ public class TicTacToe {
     }
   }
 
-  private static boolean isColWin(String player) {
-    for (int i = 0; i < cols; i++) {
+  private static boolean isRowWin(String player) {
+    for (int i = 0; i < rows; i++) {
       if (board[i][0].equals(player)
           && board[i][1].equals(player)
           && board[i][2].equals(player)) {
@@ -125,8 +128,8 @@ public class TicTacToe {
     return false;
   }
 
-  private static boolean isRowWin(String player) {
-    for (int i = 0; i < rows; i++) {
+  private static boolean isColWin(String player) {
+    for (int i = 0; i < cols; i++) {
       if (board[0][i].equals(player)
           && board[1][i].equals(player)
           && board[2][i].equals(player)) {
